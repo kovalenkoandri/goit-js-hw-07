@@ -1,14 +1,16 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
 const ulGallery = document.querySelector('ul[class="gallery"]');
-ulGallery.insertAdjacentHTML(
-  'afterbegin',
-  galleryItems.reduce(
-    (ac, cur) =>
-      ac +
-      `<a class="gallery__item" href="${cur.original}">
-  <img class="gallery__image" src="${cur.preview}" alt="${cur.description}" />
-</a>`,
-    ``
+ulGallery.innerHTML = galleryItems
+  .map(
+    e => `<a class="gallery__item" href="${e.original}">
+  <img class="gallery__image" src="${e.preview}" alt="${e.description}" /></a>`
   )
-);
+  .join('');
+var lightbox = new SimpleLightbox('.gallery .gallery__item', {
+  /* options */
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+ulGallery.addEventListener('click', event => {
+  event.preventDefault();
+});
