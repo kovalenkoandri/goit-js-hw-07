@@ -11,6 +11,3 @@ var lightbox = new SimpleLightbox('.gallery .gallery__item', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-ulGallery.addEventListener('click', event => {
-  event.preventDefault();
-});
